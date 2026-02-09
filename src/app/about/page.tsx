@@ -3,7 +3,11 @@ export default function AboutPage() {
         <div className="max-w-2xl mx-auto prose prose-invert prose-brand">
             <h1 className="text-white">About Me</h1>
             <p className="text-dark-muted">
-                Hello! I'm a software engineer with a passion for coding. My journey in software started with my mom's encouragement...
+                Hello! I'm a father/husband by day, and a software engineer by night. I have a passion for coding and building cool stuff.
+
+                I love using technology to solve real world problems and make people's lives easier.
+
+                My journey in software started with my mom's encouragement when I was a kid.
             </p>
             <p className="text-dark-muted">
                 This is where I share my thoughts on technology, coding, and occasionally, life itself.
