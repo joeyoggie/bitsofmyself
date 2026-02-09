@@ -9,11 +9,8 @@ export default function Home() {
     <div className="space-y-12">
       <section className="space-y-4">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-          Hi, I'm Joey.
-        </h1>
-        <h2 className="text-xl md:text-2xl font-medium text-gray-500 dark:text-gray-400">
           Bits of Knowledge, Bytes of Experience
-        </h2>
+        </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
           This is where I share my thoughts on technology, coding, and occasionally, life itself.
         </p>
