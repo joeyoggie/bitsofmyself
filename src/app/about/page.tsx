@@ -2,7 +2,7 @@ export default function AboutPage() {
     return (
         <div className="max-w-2xl mx-auto prose prose-invert prose-brand space-y-6">
             <div className="inline-block mb-8">
-                <h1 className="text-white animate-underline-grow m-0">About Me</h1>
+                <h1 className="text-3xl font-bold text-white animate-underline-grow m-0">About Me</h1>
             </div>
 
             <p className="text-dark-muted animate-fade-in-up delay-100">

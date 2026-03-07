@@ -6,7 +6,9 @@ export default function BlogIndex() {
 
     return (
         <div className="max-w-2xl mx-auto space-y-8">
-            <h1 className="text-3xl font-bold tracking-tight text-white">Blog</h1>
+            <div className="inline-block mb-8">
+                <h1 className="text-3xl font-bold text-white animate-underline-grow m-0">Blog</h1>
+            </div>
             <div className="space-y-8">
                 {allPosts.map((post) => (
                     <article key={post.slug} className="group relative flex flex-col items-start">
