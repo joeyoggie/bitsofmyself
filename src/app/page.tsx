@@ -14,7 +14,7 @@ export default function Home() {
               Bits of Knowledge,
             </h1>
           </div>
-          <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2 [animation-delay:1.5s]">
+          <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2 [animation-delay:1s]">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
               <span className="text-brand-500">Bytes of Experience</span>
             </h1>
