@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
+import ScrollProgress from '@/components/ScrollProgress'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white text-gray-900 dark:bg-black dark:text-gray-100 antialiased min-h-screen flex flex-col`}>
+        <ScrollProgress />
         <Navbar />
         <main className="flex-grow container mx-auto px-4 py-8">
           {children}
