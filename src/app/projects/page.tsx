@@ -3,7 +3,9 @@ const PROJECTS: any[] = [] // Add projects here
 export default function ProjectsPage() {
     return (
         <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8 text-white">Projects</h1>
+            <div className="inline-block mb-8">
+                <h1 className="text-3xl font-bold text-white animate-underline-grow m-0">Projects</h1>
+            </div>
 
             {PROJECTS.length > 0 ? (
                 <div className="grid gap-6 md:grid-cols-2">
