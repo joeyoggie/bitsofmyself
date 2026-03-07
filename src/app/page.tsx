@@ -8,10 +8,17 @@ export default function Home() {
   return (
     <div className="space-y-12">
       <section className="space-y-4">
-        <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
-            Bits of Knowledge, <span className="text-brand-500">Bytes of Experience</span>
-          </h1>
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 overflow-hidden">
+          <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
+              Bits of Knowledge,
+            </h1>
+          </div>
+          <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2 opacity-0 [animation-delay:1.5s] [animation-fill-mode:forwards]">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
+              <span className="text-brand-500">Bytes of Experience</span>
+            </h1>
+          </div>
         </div>
         <p className="text-lg text-dark-muted max-w-2xl animate-fade-in-up delay-100">
           This is where I share my thoughts on technology, coding, and occasionally, life itself.

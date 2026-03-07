@@ -68,8 +68,8 @@ body {
     white-space: nowrap;
     border-right: 3px solid transparent;
     animation:
-      typing 1.5s steps(40, end),
-      blink-caret .75s step-end infinite;
+      typing 1.5s steps(40, end) forwards,
+      blink-caret .75s step-end 3;
     max-width: fit-content;
   }
 }
