@@ -8,13 +8,15 @@ export default function Home() {
   return (
     <div className="space-y-12">
       <section className="space-y-4">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
-          Bits of Knowledge, <span className="text-brand-500">Bytes of Experience</span>
-        </h1>
-        <p className="text-lg text-dark-muted max-w-2xl">
+        <div className="inline-block overflow-hidden border-r-4 border-brand-500 animate-typing pr-2">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
+            Bits of Knowledge, <span className="text-brand-500">Bytes of Experience</span>
+          </h1>
+        </div>
+        <p className="text-lg text-dark-muted max-w-2xl animate-fade-in-up delay-100">
           This is where I share my thoughts on technology, coding, and occasionally, life itself.
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 animate-fade-in-up delay-200">
           <Link href="/blog" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium rounded-md text-dark-bg bg-brand-500 hover:bg-brand-400 transition-all shadow-[0_0_20px_rgba(34,197,94,0.2)]">
             Read blog
           </Link>
