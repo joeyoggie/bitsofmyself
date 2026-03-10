@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { trackEvent } from '@/lib/analytics'
 
 export default function ContactPage() {
     return (
@@ -10,6 +13,7 @@ export default function ContactPage() {
                         <a
                             href="mailto:hello@bitsofmyself.com"
                             className="text-brand-500 animate-underline-grow hover:text-brand-400 transition-colors"
+                            onClick={() => trackEvent({ action: 'contact_click', category: 'contact', label: 'Headline Mailto' })}
                         >
                             conversation.
                         </a>
@@ -21,6 +25,7 @@ export default function ContactPage() {
                         <a
                             href="mailto:hello@bitsofmyself.com"
                             className="text-xl md:text-2xl font-medium text-white hover:text-brand-400 transition-colors border-b border-white/20 hover:border-brand-400 pb-1"
+                            onClick={() => trackEvent({ action: 'contact_click', category: 'contact', label: 'Email Button' })}
                         >
                             hello@bitsofmyself.com
                         </a>
@@ -32,6 +37,7 @@ export default function ContactPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-lg text-dark-muted hover:text-white transition-colors"
+                            onClick={() => trackEvent({ action: 'social_click', category: 'contact', label: 'Instagram' })}
                         >
                             Instagram
                         </a>
@@ -40,6 +46,7 @@ export default function ContactPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-lg text-dark-muted hover:text-white transition-colors"
+                            onClick={() => trackEvent({ action: 'social_click', category: 'contact', label: 'Facebook' })}
                         >
                             Facebook
                         </a>
@@ -48,6 +55,7 @@ export default function ContactPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-lg text-dark-muted hover:text-white transition-colors"
+                            onClick={() => trackEvent({ action: 'social_click', category: 'contact', label: 'LinkedIn' })}
                         >
                             LinkedIn
                         </a>

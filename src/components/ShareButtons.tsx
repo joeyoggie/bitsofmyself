@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
     title: string
@@ -16,6 +17,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
         try {
             await navigator.clipboard.writeText(shareUrl)
             setCopied(true)
+            trackEvent({ action: 'share_click', category: 'social', label: 'Copy Link', value: 1 })
             setTimeout(() => setCopied(false), 2000)
         } catch (err) {
             console.error('Failed to copy: ', err)
@@ -57,6 +59,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
                         rel="noopener noreferrer"
                         className={`text-dark-muted transition-all transform hover:scale-110 ${link.color}`}
                         title={`Share on ${link.name}`}
+                        onClick={() => trackEvent({ action: 'share_click', category: 'social', label: link.name, value: 1 })}
                     >
                         <link.icon className="w-6 h-6" />
                     </a>
