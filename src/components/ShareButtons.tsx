@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Share } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
@@ -11,8 +11,27 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false)
+    const [canShare, setCanShare] = useState(false)
     const baseUrl = 'https://bitsofmyself.com'
     const shareUrl = `${baseUrl}/blog/${slug}`
+
+    useEffect(() => {
+        setCanShare(!!navigator.share)
+    }, [])
+
+    const handleShare = async () => {
+        try {
+            await navigator.share({
+                title: title,
+                url: shareUrl,
+            })
+            trackEvent({ action: 'share_click', category: 'social', label: 'Native Share', value: 1 })
+        } catch (err) {
+            if ((err as Error).name !== 'AbortError') {
+                console.error('Error sharing:', err)
+            }
+        }
+    }
 
     const handleCopy = async () => {
         try {
@@ -51,7 +70,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
             <span className="text-sm font-medium text-dark-muted uppercase tracking-widest flex items-center gap-2">
                 <Share2 className="w-4 h-4" /> Share this post
             </span>
-            <div className="flex gap-6">
+            <div className="flex gap-6 items-center">
                 {shareLinks.map((link) => (
                     <a
                         key={link.name}
@@ -65,6 +84,15 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
                         <link.icon className="w-6 h-6" />
                     </a>
                 ))}
+                {canShare && (
+                    <button
+                        onClick={handleShare}
+                        className="text-dark-muted hover:text-brand-400 transition-all transform hover:scale-110"
+                        title="More sharing options"
+                    >
+                        <Share className="w-6 h-6" />
+                    </button>
+                )}
                 <button
                     onClick={handleCopy}
                     className="text-dark-muted hover:text-brand-400 transition-all transform hover:scale-110"
