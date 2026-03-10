@@ -66,7 +66,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     ]
 
     return (
-        <div className="flex flex-col items-center gap-4 py-8 border-y border-dark-border mt-12 animate-fade-in-up">
+        <div className="flex flex-col items-center gap-4 py-8 border-t border-dark-border mt-12 animate-fade-in-up">
             <span className="text-sm font-medium text-dark-muted uppercase tracking-widest flex items-center gap-2">
                 <Share2 className="w-4 h-4" /> Share this post
             </span>
