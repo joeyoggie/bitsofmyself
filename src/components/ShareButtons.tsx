@@ -44,6 +44,11 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
         }
     }
 
+    const handleSocialShare = (name: string, href: string) => {
+        trackEvent({ action: 'share_click', category: 'social', label: name, value: 1 })
+        window.open(href, '_blank', 'noreferrer,noopener,width=600,height=400')
+    }
+
     const shareLinks = [
         {
             name: 'LinkedIn',
@@ -54,7 +59,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
         {
             name: 'Facebook',
             icon: Facebook,
-            href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+            href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&display=popup`,
             color: 'hover:text-[#1877f2]'
         },
         {
@@ -72,17 +77,14 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
             </span>
             <div className="flex gap-6 items-center">
                 {shareLinks.map((link) => (
-                    <a
+                    <button
                         key={link.name}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={() => handleSocialShare(link.name, link.href)}
                         className={`text-dark-muted transition-all transform hover:scale-110 ${link.color}`}
                         title={`Share on ${link.name}`}
-                        onClick={() => trackEvent({ action: 'share_click', category: 'social', label: link.name, value: 1 })}
                     >
                         <link.icon className="w-6 h-6" />
-                    </a>
+                    </button>
                 ))}
                 {canShare && (
                     <button
