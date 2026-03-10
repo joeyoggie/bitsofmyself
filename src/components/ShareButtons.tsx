@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Share } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Share } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
@@ -14,27 +12,8 @@ interface ShareButtonsProps {
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false)
     const [canShare, setCanShare] = useState(false)
-    const [canShare, setCanShare] = useState(false)
     const baseUrl = 'https://bitsofmyself.com'
     const shareUrl = `${baseUrl}/blog/${slug}`
-
-    useEffect(() => {
-        setCanShare(!!navigator.share)
-    }, [])
-
-    const handleShare = async () => {
-        try {
-            await navigator.share({
-                title: title,
-                url: shareUrl,
-            })
-            trackEvent({ action: 'share_click', category: 'social', label: 'Native Share', value: 1 })
-        } catch (err) {
-            if ((err as Error).name !== 'AbortError') {
-                console.error('Error sharing:', err)
-            }
-        }
-    }
 
     useEffect(() => {
         setCanShare(!!navigator.share)
