@@ -3,6 +3,27 @@ import { serialize } from 'next-mdx-remote/serialize'
 import MDXContent from '@/components/MDXContent'
 import Link from 'next/link'
 import ShareButtons from '@/components/ShareButtons'
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const post = getPostBySlug(params.slug, ['title', 'excerpt', 'slug'])
+
+    return {
+        title: post.title,
+        description: post.excerpt,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            url: `/blog/${post.slug}`,
+            type: 'article',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+        },
+    }
+}
 
 export async function generateStaticParams() {
     const posts = getPostSlugs()

@@ -9,8 +9,22 @@ import { Suspense } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bitsofmyself.com'),
   title: 'BitsOfMyself',
   description: 'Bits of myself - A tech and personal blog.',
+  openGraph: {
+    title: 'BitsOfMyself',
+    description: 'Bits of myself - A tech and personal blog.',
+    url: 'https://bitsofmyself.com',
+    siteName: 'BitsOfMyself',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BitsOfMyself',
+    description: 'Bits of myself - A tech and personal blog.',
+  },
 }
 
 export default function RootLayout({
