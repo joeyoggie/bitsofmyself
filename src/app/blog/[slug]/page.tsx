@@ -2,6 +2,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/api'
 import { serialize } from 'next-mdx-remote/serialize'
 import MDXContent from '@/components/MDXContent'
 import Link from 'next/link'
+import ShareButtons from '@/components/ShareButtons'
 
 export async function generateStaticParams() {
     const posts = getPostSlugs()
@@ -38,6 +39,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
             <div className="prose prose-gray dark:prose-invert max-w-none animate-fade-in-up delay-200">
                 <MDXContent source={mdxSource} />
             </div>
+
+            <ShareButtons title={post.title} slug={post.slug} />
+
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center animate-fade-in-up delay-300">
                 <Link href="/blog" className="text-brand-500 hover:text-brand-400 transition-colors">
                     ← Back to Blog
