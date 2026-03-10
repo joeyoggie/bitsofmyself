@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Share2, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Share } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 
 interface ShareButtonsProps {
@@ -11,8 +11,27 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false)
+    const [canShare, setCanShare] = useState(false)
     const baseUrl = 'https://bitsofmyself.com'
     const shareUrl = `${baseUrl}/blog/${slug}`
+
+    useEffect(() => {
+        setCanShare(!!navigator.share)
+    }, [])
+
+    const handleShare = async () => {
+        try {
+            await navigator.share({
+                title: title,
+                url: shareUrl,
+            })
+            trackEvent({ action: 'share_click', category: 'social', label: 'Native Share', value: 1 })
+        } catch (err) {
+            if ((err as Error).name !== 'AbortError') {
+                console.error('Error sharing:', err)
+            }
+        }
+    }
 
     const handleCopy = async () => {
         try {
@@ -52,19 +71,32 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
                 <Share2 className="w-4 h-4" /> Share this post
             </span>
             <div className="flex gap-6">
-                {shareLinks.map((link) => (
-                    <a
-                        key={link.name}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`text-dark-muted transition-all transform hover:scale-110 ${link.color}`}
-                        title={`Share on ${link.name}`}
-                        onClick={() => trackEvent({ action: 'share_click', category: 'social', label: link.name, value: 1 })}
+                {canShare ? (
+                    <button
+                        onClick={handleShare}
+                        className="flex items-center gap-2 px-4 py-2 bg-brand-500 text-dark-bg rounded-full font-medium hover:bg-brand-400 transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(34,197,94,0.3)]"
+                        title="Share post"
                     >
-                        <link.icon className="w-6 h-6" />
-                    </a>
-                ))}
+                        <Share className="w-5 h-5" />
+                        <span>Share</span>
+                    </button>
+                ) : (
+                    <>
+                        {shareLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`text-dark-muted transition-all transform hover:scale-110 ${link.color}`}
+                                title={`Share on ${link.name}`}
+                                onClick={() => trackEvent({ action: 'share_click', category: 'social', label: link.name, value: 1 })}
+                            >
+                                <link.icon className="w-6 h-6" />
+                            </a>
+                        ))}
+                    </>
+                )}
                 <button
                     onClick={handleCopy}
                     className="text-dark-muted hover:text-brand-400 transition-all transform hover:scale-110"
