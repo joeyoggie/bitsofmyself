@@ -8,6 +8,14 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            typography: {
+                DEFAULT: {
+                    css: {
+                        'blockquote p:first-of-type::before': { content: 'none' },
+                        'blockquote p:last-of-type::after': { content: 'none' },
+                    },
+                },
+            },
             colors: {
                 brand: {
                     50: '#f0fdf4',
