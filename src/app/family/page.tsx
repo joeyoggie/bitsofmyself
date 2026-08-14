@@ -120,6 +120,7 @@ export default function FamilyPage() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [logIndex, setLogIndex] = useState(0)
   const [predictionIndex, setPredictionIndex] = useState(0)
+  const [isPredictionRevealed, setIsPredictionRevealed] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   const prediction = PREDICTIONS[predictionIndex]
@@ -162,6 +163,7 @@ export default function FamilyPage() {
   const nav = (next: Screen) => {
     setScreen(next)
     if (next === 'wall') setSelected(null)
+    if (next === 'predictions') setIsPredictionRevealed(false)
   }
 
   return (
@@ -289,7 +291,7 @@ export default function FamilyPage() {
                     </div>
                     <div className="mt-8 flex flex-wrap gap-2 border-t border-white/5 pt-5">
                       <button onClick={randomAnalysis} className="flex items-center gap-2 rounded-lg border border-brand-500/30 bg-brand-500/10 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-brand-400 hover:bg-brand-500/15"><RefreshCw className="h-3.5 w-3.5" /> Analyze another</button>
-                      <button onClick={() => nav('predictions')} className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-neutral-400 hover:text-white">Run predictions <ChevronRight className="h-3.5 w-3.5" /></button>
+                      <button onClick={() => { nav('predictions'); setIsPredictionRevealed(false); }} className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-neutral-400 hover:text-white">Run predictions <ChevronRight className="h-3.5 w-3.5" /></button>
                     </div>
                   </div>
                 )}
@@ -305,12 +307,22 @@ export default function FamilyPage() {
                 <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-black tracking-tight md:text-5xl">{prediction[0]}</h2>
                 <p className="mt-5 font-mono text-xs uppercase tracking-wider text-neutral-600">Audience prediction required before reveal</p>
                 <div className="mt-10 min-h-24 flex items-center justify-center">
-                  <button onClick={() => setPredictionIndex((i) => (i + 1) % PREDICTIONS.length)} className="group rounded-2xl border border-brand-500/30 bg-brand-500/[0.06] px-8 py-5 transition hover:border-brand-500/60 hover:bg-brand-500/10">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">Click to reveal prediction</div>
-                    <div className="mt-2 flex items-center justify-center gap-2 text-xl font-bold text-brand-400"><Trophy className="h-5 w-5" /> {prediction[1]}</div>
-                  </button>
+                  {!isPredictionRevealed ? (
+                    <button onClick={() => setIsPredictionRevealed(true)} className="group rounded-2xl border border-brand-500/30 bg-brand-500/[0.06] px-8 py-5 transition hover:border-brand-500/60 hover:bg-brand-500/10 active:scale-95">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">Click to reveal prediction</div>
+                    </button>
+                  ) : (
+                    <div className="animate-fade-in-up rounded-2xl border border-brand-500/50 bg-brand-500/10 px-8 py-5 shadow-[0_0_50px_rgba(34,197,94,0.1)]">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-500">Prediction result</div>
+                      <div className="mt-2 flex items-center justify-center gap-2 text-xl font-bold text-brand-400"><Trophy className="h-5 w-5" /> {prediction[1]}</div>
+                    </div>
+                  )}
                 </div>
-                <div className="mt-10 flex justify-center gap-2"><button onClick={() => setPredictionIndex((i) => (i - 1 + PREDICTIONS.length) % PREDICTIONS.length)} className="rounded-lg border border-white/10 p-2 text-neutral-500 hover:text-white">←</button><div className="flex items-center px-3 font-mono text-[10px] text-neutral-600">{predictionIndex + 1} / {PREDICTIONS.length}</div><button onClick={() => setPredictionIndex((i) => (i + 1) % PREDICTIONS.length)} className="rounded-lg border border-white/10 p-2 text-neutral-500 hover:text-white">→</button></div>
+                <div className="mt-10 flex justify-center gap-2">
+                  <button onClick={() => { setPredictionIndex((i) => (i - 1 + PREDICTIONS.length) % PREDICTIONS.length); setIsPredictionRevealed(false); }} className="rounded-lg border border-white/10 p-2 text-neutral-500 hover:text-white">←</button>
+                  <div className="flex items-center px-3 font-mono text-[10px] text-neutral-600">{predictionIndex + 1} / {PREDICTIONS.length}</div>
+                  <button onClick={() => { setPredictionIndex((i) => (i + 1) % PREDICTIONS.length); setIsPredictionRevealed(false); }} className="rounded-lg border border-white/10 p-2 text-neutral-500 hover:text-white">→</button>
+                </div>
               </div>
             </section>
           )}
