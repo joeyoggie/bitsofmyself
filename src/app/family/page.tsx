@@ -90,7 +90,6 @@ const PREDICTIONS = [
   ['Who would be most likely to solve a murder mystery?', 'Reham'],
   ['Who would be most likely to get lost using Google Maps?', 'Happy'],
   ['Who would be most likely to know exactly what everyone wants for dinner?', 'Bobba'],
-  ['Who would be most likely to turn a 5-minute task into a 2-day project?', 'Youssef'],
   ['Who would be most likely to say “I don’t want anything” and then steal your food?', 'Dina'],
 ];
 
