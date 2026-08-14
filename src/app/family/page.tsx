@@ -83,7 +83,7 @@ const PREDICTIONS = [
   ['Who is most likely to have snacks hidden somewhere nobody knows about?', 'Nannoo'],
   ['Who would survive the longest on a deserted island?', 'Ramy'],
   ['Who would spend the most money in 10 minutes if given unlimited money?', 'Youssef'],
-  ['Who would survive the longest without their phone?', 'Bobba'],
+  ['Who would survive the longest without their phone?', 'Silvia'],
   ['Who would be most likely to become a YouTuber?', 'Teefo'],
   ['Who would be most likely to win a family dance competition?', 'Maya'],
   ['Who would be most likely to become an astronaut?', 'Omariko'],
