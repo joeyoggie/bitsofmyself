@@ -29,13 +29,13 @@ export default function Navbar() {
                     >
                         Projects
                     </Link>
-                    <Link
+                    /* <Link
                         href="/family"
                         className="text-sm font-medium text-dark-muted hover:text-brand-400 transition-colors"
                         onClick={() => trackEvent({ action: 'nav_click', category: 'navigation', label: 'Family' })}
                     >
                         Family
-                    </Link>
+                    </Link> */
                     <Link
                         href="/about"
                         className="text-sm font-medium text-dark-muted hover:text-brand-400 transition-colors"
