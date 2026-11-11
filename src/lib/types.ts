@@ -1,6 +1,7 @@
 export type ProjectCategory = 'Side Projects' | 'Professional Apps';
 
 export type Project = {
+    slug: string;
     title: string;
     description: string;
     category: ProjectCategory;
@@ -8,6 +9,8 @@ export type Project = {
     role?: string;
     tags?: string[];
     url?: string;
+    order?: number;
+    content?: string;
 };
 
 export type Post = {
