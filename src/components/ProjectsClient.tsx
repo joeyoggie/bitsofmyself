@@ -49,31 +49,41 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                         className="flex flex-col justify-between p-6 border border-dark-border bg-dark-surface rounded-lg hover:border-brand-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)] transition-all"
                     >
                         <div>
-                            <div className="flex items-center justify-between gap-2 mb-2">
-                                <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">
-                                    {project.category}
-                                </span>
-                                {project.company && (
-                                    <span className="text-xs text-dark-muted">
+                            {/* Card Top Metadata Row */}
+                            <div className="flex items-center justify-between gap-2 mb-3">
+                                {project.company ? (
+                                    <span className="text-xs font-medium text-dark-muted">
                                         @{project.company}
                                     </span>
+                                ) : (
+                                    <span />
                                 )}
+                                {/* Category tag - normal & white */}
+                                <span className="text-xs font-medium text-white/90 bg-white/5 border border-white/10 px-2 py-0.5 rounded">
+                                    {project.category}
+                                </span>
                             </div>
 
-                            <h2 className="text-xl font-bold text-white mb-1">{project.title}</h2>
+                            {/* Project Title */}
+                            <h2 className="text-xl font-bold text-white mb-2">{project.title}</h2>
 
+                            {/* Role Badge - green accent */}
                             {project.role && (
-                                <p className="text-xs font-medium text-brand-500 mb-3">
-                                    Role: {project.role}
-                                </p>
+                                <div className="mb-3">
+                                    <span className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                                        {project.role}
+                                    </span>
+                                </div>
                             )}
 
+                            {/* Description */}
                             <p className="text-dark-muted text-sm mb-4 leading-relaxed">
                                 {project.description}
                             </p>
                         </div>
 
                         <div>
+                            {/* Tech Stack Tags */}
                             {project.tags && project.tags.length > 0 && (
                                 <div className="flex flex-wrap gap-1.5 mb-4">
                                     {project.tags.map((tag, tagIdx) => (
@@ -87,6 +97,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                                 </div>
                             )}
 
+                            {/* Optional URL */}
                             {project.url && (
                                 <a
                                     href={project.url}
