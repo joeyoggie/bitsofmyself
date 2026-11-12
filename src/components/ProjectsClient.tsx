@@ -29,11 +29,10 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                         <button
                             key={category}
                             onClick={() => setSelectedCategory(category)}
-                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
-                                selectedCategory === category
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${selectedCategory === category
                                     ? 'bg-brand-500 text-dark-bg shadow-[0_0_15px_rgba(34,197,94,0.3)]'
                                     : 'bg-dark-surface text-dark-muted hover:text-white border border-dark-border hover:border-brand-500/50'
-                            }`}
+                                }`}
                         >
                             {category} ({count})
                         </button>
@@ -49,69 +48,70 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                         className="flex flex-col justify-between p-6 border border-dark-border bg-dark-surface rounded-lg hover:border-brand-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)] transition-all"
                     >
                         <div>
-                            {/* Card Top Metadata Row */}
-                            <div className="flex items-center justify-between gap-2 mb-3">
-                                {project.company ? (
-                                    <span className="text-xs font-medium text-dark-muted">
-                                        @{project.company}
-                                    </span>
-                                ) : (
-                                    <span />
-                                )}
-                                {/* Category tag - normal & white */}
-                                <span className="text-xs font-medium text-white/90 bg-white/5 border border-white/10 px-2 py-0.5 rounded">
-                                    {project.category}
-                                </span>
-                            </div>
-
-                            {/* Project Title */}
-                            <h2 className="text-xl font-bold text-white mb-2">{project.title}</h2>
-
-                            {/* Role Badge - green accent */}
-                            {project.role && (
-                                <div className="mb-3">
-                                    <span className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">
-                                        {project.role}
-                                    </span>
+                            {/* Card Header: Title & Role on left, Category tag & @company label on right */}
+                            <div className="flex items-start justify-between gap-4 mb-3">
+                                <div className="min-w-0 flex-1">
+                                    <h2 className={`text-xl font-bold text-white ${project.role ? 'mb-2' : ''}`}>
+                                        {project.title}
+                                    </h2>
+                                    {project.role && (
+                                        <div>
+                                            <span className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                                                {project.role}
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+
+                                            <div className="flex flex-col items-end gap-1 shrink-0 text-right">
+                                                {/* Category tag - normal & white */}
+                                                <span className="text-xs font-medium text-white/90 bg-white/5 border border-white/10 px-2 py-0.5 rounded">
+                                                    {project.category}
+                                                </span>
+                                                {project.company && (
+                                                    <span className="text-xs font-medium text-dark-muted">
+                                                        @{project.company}
+                                                    </span>
+                                                )}
+                                            </div>
+                                    </div>
 
                             {/* Description */}
-                            <p className="text-dark-muted text-sm mb-4 leading-relaxed">
-                                {project.description}
-                            </p>
-                        </div>
+                                <p className="text-dark-muted text-sm mb-4 leading-relaxed">
+                                    {project.description}
+                                </p>
+                            </div>
 
-                        <div>
-                            {/* Tech Stack Tags */}
-                            {project.tags && project.tags.length > 0 && (
-                                <div className="flex flex-wrap gap-1.5 mb-4">
-                                    {project.tags.map((tag, tagIdx) => (
-                                        <span
-                                            key={tagIdx}
-                                            className="text-xs text-dark-muted bg-dark-bg border border-dark-border rounded px-2 py-0.5"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
+                            <div>
+                                {/* Tech Stack Tags */}
+                                {project.tags && project.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-1.5 mb-4">
+                                        {project.tags.map((tag, tagIdx) => (
+                                            <span
+                                                key={tagIdx}
+                                                className="text-xs text-dark-muted bg-dark-bg border border-dark-border rounded px-2 py-0.5"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
 
-                            {/* Optional URL */}
-                            {project.url && (
-                                <a
-                                    href={project.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-brand-500 hover:text-brand-400 text-sm font-medium transition-colors inline-flex items-center"
-                                >
-                                    View Project <span className="ml-1">→</span>
-                                </a>
-                            )}
+                                {/* Optional URL */}
+                                {project.url && (
+                                    <a
+                                        href={project.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-brand-500 hover:text-brand-400 text-sm font-medium transition-colors inline-flex items-center"
+                                    >
+                                        View Project <span className="ml-1">→</span>
+                                    </a>
+                                )}
+                            </div>
                         </div>
-                    </div>
                 ))}
-            </div>
+                    </div>
         </div>
-    )
+            )
 }
