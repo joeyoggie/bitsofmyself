@@ -1,5 +1,5 @@
 import { getAllProjects } from '@/lib/api'
-import ProjectsClient from '@/components/ProjectsClient'
+import ProjectsClient from './ProjectsClient'
 
 export default function ProjectsPage() {
     const projects = getAllProjects([
