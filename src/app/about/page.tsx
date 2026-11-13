@@ -19,7 +19,7 @@ export default function AboutPage() {
                         Hello! My name is <span className="text-white font-semibold">Youssef Wagieh</span>. I'm a Software Engineering Lead and Mobile Architect based in Cairo, Egypt.
                     </p>
                     <p className="text-dark-muted">
-                        I'm a father/husband by day, and a software engineer by night. I have a passion for coding and building cool stuff. I love using technology to solve real world problems and make people's lives easier
+                        I'm a father/husband by day, and a software engineer by night. I have a passion for coding and building cool stuff. I love using technology to solve real world problems and make people's lives easier.
                     </p>
                     <p className="text-dark-muted">
                         My passion with technology started with my family's encouragement when I was a kid. My mom would always encourage me to tinker with electronics and build things (and occasionally break a few along the way).
