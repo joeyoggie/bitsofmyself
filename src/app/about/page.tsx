@@ -11,7 +11,7 @@ export default function AboutPage() {
             {/* Header & Bio */}
             <section className="space-y-6">
                 <div className="inline-block">
-                    <h1 className="text-3xl sm:text-4xl font-bold text-white animate-underline-grow m-0">About Me</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-white animate-underline-grow m-0">About</h1>
                 </div>
 
                 <div className="space-y-4 text-dark-text leading-relaxed animate-fade-in-up delay-100">
@@ -19,10 +19,14 @@ export default function AboutPage() {
                         Hello! My name is <span className="text-white font-semibold">Youssef Wagieh</span>. I'm a Software Engineering Lead and Mobile Architect based in Cairo, Egypt.
                     </p>
                     <p className="text-dark-muted">
-                        I'm a father and husband by day, and a software craftsman by night. My fascination with technology began as a kid—encouraged by my mom to tinker with electronics and build things (and occasionally break a few along the way). That hands-on curiosity evolved into a lifelong passion for using technology to solve real-world problems and make people's lives easier.
+                        I'm a father/husband by day, and a software engineer by night. I have a passion for coding and building cool stuff. I love using technology to solve real world problems and make people's lives easier
+
+                        My passion with technology started with my family's encouragement when I was a kid. My mom would always encourage me to tinker with electronics and build things (and occasionally break a few along the way).
+
+                        That hands-on curiosity evolved into a lifelong passion for using technology to solve real-world problems and make people's lives easier.
                     </p>
                     <p className="text-dark-muted">
-                        With over 8 years of professional engineering experience, I specialize in architecting resilient Android and multiplatform mobile applications, leading high-performing teams, and scaling products used by millions of users across the MENA region.
+                        With over 8 years of professional engineering experience, I specialize in architecting Android and multiplatform mobile applications, leading high-performing teams, and scaling products used by millions of users across the MENA region.
                     </p>
                 </div>
             </section>
@@ -37,7 +41,7 @@ export default function AboutPage() {
                     <div className="p-5 bg-dark-surface border border-dark-border rounded-lg hover:border-brand-500/40 transition-all">
                         <h3 className="text-base font-semibold text-white mb-2">Mobile & Multiplatform</h3>
                         <p className="text-sm text-dark-muted leading-relaxed">
-                            Modern Android, Compose Multiplatform, Kotlin Multiplatform (KMM), Kotlin, Java, Jetpack Compose, Coroutines & Flow.
+                            Modern Android, Compose Multiplatform, Kotlin Multiplatform (KMP), Kotlin, Java, Jetpack Compose, Coroutines & Flow.
                         </p>
                     </div>
                     <div className="p-5 bg-dark-surface border border-dark-border rounded-lg hover:border-brand-500/40 transition-all">
