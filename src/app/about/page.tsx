@@ -153,7 +153,7 @@ export default function AboutPage() {
                     </h2>
                     <div className="space-y-2 text-xs text-dark-muted leading-relaxed">
                         <p>
-                            When I'm not in an IDE or reviewing code, you can find me cycling, reading, following TV series, or tinkering with home automation and IoT hardware.
+                            When I'm not in an IDE or reviewing code, you can find me playing video games, following TV series, or tinkering with home automation and IoT hardware.
                         </p>
                         <p>
                             <span className="text-white/90 font-medium">Languages:</span> Arabic (Native), English (Fluent).
