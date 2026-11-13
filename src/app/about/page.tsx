@@ -107,7 +107,7 @@ export default function AboutPage() {
                                 <span className="text-dark-muted text-sm sm:ml-2">@ Aqwas</span>
                             </div>
                             <span className="text-xs font-mono text-dark-muted bg-dark-bg px-2 py-0.5 rounded border border-dark-border w-fit">
-                                Dec 2019 – Present
+                                Dec 2019 – Nov 2024
                             </span>
                         </div>
                         <p className="text-sm text-dark-muted leading-relaxed">
